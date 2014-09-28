@@ -20,29 +20,29 @@ var AgileGrenobleApp = angular.module('FamousUIApp', ['famous.angular'])
 		 },
 		 {
 		 	'name': '1',
-		 	'x' : 30,
+		 	'x' : 80,
 		 	'y' : 40
 		 },
 		 {
 		 	'name': '1',
-		 	'x' : 50,
+		 	'x' : 110,
 		 	'y' : 160
 		 },
 		 {
 		 	'name': '1',
-		 	'x' : 30,
+		 	'x' : 130,
 		 	'y' : 40
 		 },
 		 {
 		 	'name': '1',
-		 	'x' : 50,
+		 	'x' : 150,
 		 	'y' : 160
 		 }
 		];
 
 
 		this.translateX = function(x) {
-			return (this.rangeValue*x/100)*30;
+			return (this.rangeValue*x/100)*10;
 		}
 
 		var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -54,21 +54,15 @@ var AgileGrenobleApp = angular.module('FamousUIApp', ['famous.angular'])
 	      period: 1000,
 	      dampingRatio: 0.3
 	    };
-	    var indexClick = 0;
+
 	    $scope.bouncy = new Transitionable([0,0,0]);
 	    $scope.buttonFlyDown = function(){
-	    	if( indexClick == 0) {
-		    	$scope.bouncy.set([200, 200, 0], {method : 'spring', dampingRatio : 0.5, period : 500});
-		    	indexClick++;
-		    } else if( indexClick == 1) {
-		    	$scope.bouncy.set([800, 200, 0], {method : 'spring', dampingRatio : 0.5, period : 1000});
-		    	indexClick++;
-		    } else {
-		  		$scope.bouncy.set([40*indexClick, 50*(indexClick+3), 0], {method : 'spring', dampingRatio : 0.5, period : 1000});  	
-		  		indexClick++;
-		    }
-	      
+	    	$scope.bouncy.set([800*Math.random(), 800*Math.random(), 10*Math.random()], {method : 'spring', dampingRatio : 0.5, period : Math.random()*2000});
 	    };
+
+	    $scope.getColor = function() {
+	    	return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+	    }
 
 });
 

@@ -16,10 +16,10 @@
 
         
         <style>
-            .square {
-                background-color: red;
-            }
 
+            .square {
+             background-color: red;      
+            }
             .rotateMod {
              background-color: blue;   
             }
@@ -43,12 +43,12 @@
                     {{ui.rangeValue}}
             </fa-surface>
             <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-origin="[.125, .125]">
-                <fa-surface class="square"  fa-click="buttonFlyDown()" >{{ui.rangeValue}}
+                <fa-surface class="square" fa-click="buttonFlyDown()" >{{ui.rangeValue}}
                 </fa-surface>
             </fa-modifier>
 
             <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-size="[40, 40]" fa-translate="[ui.translateX(square.x), 250, 2]" fa-origin="[.125, .125]">
-                <fa-surface class="square">{{ui.rangeValue}}
+                <fa-surface fa-background-color="getColor()">{{ui.rangeValue}}
                 </fa-surface>
             </fa-modifier>
             
