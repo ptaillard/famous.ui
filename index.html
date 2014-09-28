@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FamousUIApp">
+    <head>
+        <title>Famous</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bower_components/famous-angular/dist/famous-angular.css" />
+
+        
+        <style>
+            .square {
+                background-color: red;
+            }
+
+            .rotateMod {
+             background-color: blue;   
+            }
+
+            fa-app {
+              position: fixed;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <fa-app ng-controller="FamousUICtrl as ui">
+            <fa-surface>
+                <div>test</div>
+                    <input type="range" ng-model="ui.rangeValue">
+                    {{ui.rangeValue}}
+            </fa-surface>
+            <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-origin="[.125, .125]">
+                <fa-surface class="square"  fa-click="buttonFlyDown()" >{{ui.rangeValue}}
+                </fa-surface>
+            </fa-modifier>
+
+            <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-size="[40, 40]" fa-translate="[ui.translateX(square.x), 250, 2]" fa-origin="[.125, .125]">
+                <fa-surface class="square">{{ui.rangeValue}}
+                </fa-surface>
+            </fa-modifier>
+            
+            <fa-animation autoplay="true" duration="1200" loop="true">
+                <animate    targetModSelector=".rotateMod"
+                            field="rotateZ"
+                            startValue="0"
+                            endValue="6.283"
+                            curve="linear" >
+                </animate>
+            </fa-animation>
+          
+            <!--/fa-grid-layout-->
+        </fa-app>
+
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>
+
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/famous/famous-global.min.js"></script>
+        <script src="bower_components/famous-angular/dist/famous-angular.js"></script>
+
+        <script src="scripts/app.js"></script>
+    </body>
+</html>
