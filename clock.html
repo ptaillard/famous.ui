@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FamousUIApp">
+    <head>
+        <title>Famous</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bower_components/famous-angular/dist/famous-angular.css" />
+
+        
+        <style>
+
+            .square {
+             background-color: red;
+             border-radius: 8px;
+             box-shadow: 10px 10px 5px #656565;
+            }
+            .rotateMod {
+             background-color: blue;   
+            }
+
+            fa-app {
+              position: fixed;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+            }
+
+            .clock {
+                font-size: 6em;
+                font-weight: bold;
+                opacity: 0.6;
+                color: white;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <fa-app ng-controller="FamousUICtrl as ui">
+            <fa-modifier fa-size="[100, 100]" fa-origin="[.5, 0]">
+                <fa-surface>
+                 Meteo: {{weather}}
+                </fa-surface>
+            </fa-modifier>
+
+            <fa-modifier>
+                <fa-image-surface  fa-image-url="paysage.jpg">
+                 Meteo: {{weather}}
+                </fa-image-surface>
+            </fa-modifier>
+
+
+            <fa-modifier fa-size="[600, 100]" fa-origin="[.5, .3]">
+                <fa-surface>
+                    <span class="clock" my-current-time="format"></span> 
+                </fa-surface>
+            </fa-modifier> 
+
+            <fa-animation autoplay="true" duration="50000" loop="true">
+                <animate    targetModSelector=".rotateMod"
+                            field="rotateX"
+                            startValue="0"
+                            endValue="15.283"
+                            curve="linear" >
+                </animate>
+            </fa-animation>
+        </fa-app>
+
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>
+
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/famous/famous-global.min.js"></script>
+        <script src="bower_components/famous-angular/dist/famous-angular.js"></script>
+
+        <script src="scripts/appClock.js"></script>
+        <script src="scripts/clock/factoryWeather.js"></script>
+        <script src="scripts/clock/weatherService.js"></script>
+        
+    </body>
+</html>

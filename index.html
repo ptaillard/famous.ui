@@ -18,7 +18,9 @@
         <style>
 
             .square {
-             background-color: red;      
+             background-color: red;
+             border-radius: 8px;
+             box-shadow: 10px 10px 5px #656565;
             }
             .rotateMod {
              background-color: blue;   
@@ -42,10 +44,34 @@
                     <input type="range" ng-model="ui.rangeValue">
                     {{ui.rangeValue}}
             </fa-surface>
-            <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-origin="[.125, .125]">
-                <fa-surface class="square" fa-click="buttonFlyDown()" >{{ui.rangeValue}}
-                </fa-surface>
+
+            <!--fa-image-surface
+                         fa-image-url="test.jpg"
+                         class="img"
+                         fa-color="'blue'"
+                         fa-background-color="'#fff'"
+                         fa-size="[500, 200]">
+              </fa-image-surface-->
+
+            <fa-modifier class="rotateMod1" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-origin="[.125, .125]">
+                <fa-image-surface class="square" fa-image-url="img1.jpg" fa-click="buttonFlyDown()" >{{ui.rangeValue}}
+                </fa-image-surface>
             </fa-modifier>
+
+            <fa-modifier class="rotateMod1" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-origin="[.25, .125]">
+                <fa-image-surface class="square" fa-image-url="img2.jpg" fa-click="buttonFlyDown()" >{{ui.rangeValue}}
+                </fa-image-surface>
+            </fa-modifier>
+
+            <fa-modifier class="rotateMod2" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-scale="scale()" fa-origin="[.125, .25]">
+                <fa-image-surface class="square" fa-image-url="img3.jpg" fa-click="buttonFlyDown()" >{{ui.rangeValue}}
+                </fa-image-surface>
+            </fa-modifier>
+
+                <fa-modifier class="rotateMod2" fa-size="[80, 80]" fa-translate="bouncy.get()" fa-origin="[.25, .25]">
+                    <fa-image-surface class="square" fa-image-url="img4.jpg" fa-click="buttonFlyDown()" >{{ui.rangeValue}}
+                    </fa-image-surface>
+                </fa-modifier>
 
             <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-size="[40, 40]" fa-translate="[ui.translateX(square.x), 250, 2]" fa-origin="[.125, .125]">
                 <fa-surface fa-background-color="getColor()">{{ui.rangeValue}}
@@ -58,6 +84,26 @@
                             startValue="0"
                             endValue="6.283"
                             curve="linear" >
+                </animate>
+            </fa-animation>
+
+            <fa-animation autoplay="true" duration="3000" loop="true">
+                <animate    targetModSelector=".rotateMod2"
+                            field="rotateZ"
+                            startValue="0"
+                            endValue="6.283"
+                            curve="inQuad" >
+                </animate>
+            </fa-animation>
+
+
+
+            <fa-animation autoplay="true" duration="4000" loop="true">
+                <animate    targetModSelector=".rotateMod1"
+                            field="rotateZ"
+                            startValue="0"
+                            endValue="6.283"
+                            curve="outElastic" >
                 </animate>
             </fa-animation>
           

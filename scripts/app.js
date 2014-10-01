@@ -1,4 +1,4 @@
-var AgileGrenobleApp = angular.module('FamousUIApp', ['famous.angular'])
+var app = angular.module('FamousUIApp', ['famous.angular'])
 	.controller('FamousUICtrl', function($scope, $famous) {
 		this.rangeValue = 20;
 
@@ -57,8 +57,12 @@ var AgileGrenobleApp = angular.module('FamousUIApp', ['famous.angular'])
 
 	    $scope.bouncy = new Transitionable([0,0,0]);
 	    $scope.buttonFlyDown = function(){
-	    	$scope.bouncy.set([800*Math.random(), 800*Math.random(), 10*Math.random()], {method : 'spring', dampingRatio : 0.5, period : Math.random()*2000});
+	    	$scope.bouncy.set([800*Math.random(), 800*Math.random(), 10*Math.random()], {method : 'spring', dampingRatio : 0.5, period : 500+Math.random()*2000});
 	    };
+
+	    $scope.scale = function(){
+	    	return [0.8, 0.8]; 
+	    }
 
 	    $scope.getColor = function() {
 	    	return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
